@@ -66,8 +66,21 @@ public class CartServlet extends BaseServlet {
 	 * @return
 	 */
 	public String clear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("qingkong");
-		return "";
+		//得到购物车
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		cart.clear();
+		return "f:/jsps/cart/list.jsp";
+	}
+	/**
+	 * 删除某个条目 根据bid
+	 * @return
+	 */
+	public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//得到购物车和图书id
+		String bid = request.getParameter("bid");
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		cart.delete(bid);
+		return "f:/jsps/cart/list.jsp";
 	}
 
 }
