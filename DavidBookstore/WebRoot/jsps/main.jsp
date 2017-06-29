@@ -52,7 +52,7 @@
 			<iframe frameborder="0" width="120" src="<c:url value='/servlet/CategoryServlet?method=findAll'/>" name="left"></iframe>
 		</td>
 		<td>
-			<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
+			<iframe frameborder="0" src="<c:url value='/jsps/body.jsp' />" name="body"></iframe>
 		</td>
 	</tr>
 </table>

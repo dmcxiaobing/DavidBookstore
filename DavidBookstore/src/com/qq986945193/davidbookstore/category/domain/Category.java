@@ -1,6 +1,6 @@
 package com.qq986945193.davidbookstore.category.domain;
 /**
- * 书的javabean
+ * 分类的javabean
  */
 public class Category {
 	private String cid;

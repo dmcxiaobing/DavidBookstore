@@ -60,7 +60,7 @@
     <li>作者：${book.author }</li>
     <li>单价：${book.price }元</li>
   </ul>
-  <form id="form" action="<c:url value='/CartServlet'/>" method="post">
+  <form id="form" action="<c:url value='/servlet/CartServlet'/>" method="post">
   	<%-- 指定要调用的方法 --%>
   	<input type="hidden" name="method" value="add"/>
   	<input type="hidden" name="bid" value="${book.bid }"/>

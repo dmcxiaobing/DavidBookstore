@@ -16,6 +16,7 @@ import com.david.webtools.common.base.BaseServlet;
 import com.david.webtools.common.utils.CommonUtils;
 import com.david.webtools.common.utils.Mail;
 import com.david.webtools.common.utils.MailUtils;
+import com.qq986945193.davidbookstore.cart.domain.Cart;
 import com.qq986945193.davidbookstore.common.utils.MailSendUtils;
 import com.qq986945193.davidbookstore.common.utils.RegexUtils;
 import com.qq986945193.davidbookstore.user.domain.MailInfo;
@@ -129,6 +130,7 @@ public class UserServlet extends BaseServlet {
 		try {
 			User user = userService.login(userform);
 			request.getSession().setAttribute("session_user", user);
+			request.getSession().setAttribute("cart", new Cart());
 			return "r:/index.jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());

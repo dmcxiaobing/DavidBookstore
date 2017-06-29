@@ -65,7 +65,7 @@
 <table border="1" width="100%" cellspacing="0" background="black">
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a href="<c:url value='/CartServlet?method=clear'/>">清空购物车</a>
+			<a href="<c:url value='/servlet/CartServlet?method=clear'/>">清空购物车</a>
 		</td>
 	</tr>
 	<tr>
@@ -86,7 +86,7 @@
 		<td>${cartItem.book.price }元</td>
 		<td>${cartItem.count }</td>
 		<td>${cartItem.subtotal }元</td>
-		<td><a href="<c:url value='/CartServlet?method=delete&bid=${cartItem.book.bid }'/>">删除</a></td>
+		<td><a href="<c:url value='/servlet/CartServlet?method=delete&bid=${cartItem.book.bid }'/>">删除</a></td>
 	</tr>
 </c:forEach>
 

@@ -13,6 +13,11 @@
     <servlet-name>BookServlet</servlet-name>
     <servlet-class>com.qq986945193.davidbookstore.book.web.servlet.BookServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>com.qq986945193.davidbookstore.cart.web.servlet.CartServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -27,6 +32,10 @@
   <servlet-mapping>
     <servlet-name>BookServlet</servlet-name>
     <url-pattern>/servlet/BookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/servlet/CartServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
