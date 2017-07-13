@@ -97,8 +97,8 @@
 	</tr>
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a id="buy" href="<c:url value='/OrderServlet?method=add'/>"></a>
-		</td>
+			<a id="buy" href="<c:url value='/servlet/OrderServlet?method=addOrder'/>"></a>
+			</td>
 	</tr>
 </table>
 	</c:otherwise>

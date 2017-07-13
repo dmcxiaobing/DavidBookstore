@@ -77,7 +77,7 @@
 
 </table>
 <br/>
-<form method="post" action="<c:url value='/OrderServlet'/>" id="form" target="_parent">
+<form method="post" action="<c:url value='/servlet/OrderServlet'/>" id="form" target="_parent">
 	<input type="hidden" name="method" value="zhiFu"/>
 	<input type="hidden" name="oid" value="${order.oid }"/>
 	收货地址：<input type="text" name="address" size="50" value="北京市海淀区金燕龙大厦2楼216室无敌收"/><br/>
