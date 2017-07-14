@@ -18,7 +18,7 @@
   </head>
   
   <body style="background: rgb(78,78,78);color: white;">
-<h1 style="text-align: center; ">ITCAST网络图书商城后台管理</h1>
-<p style="font-size: 11pt;">管理员：张三</p>
+<h1 style="text-align: center; ">David网络图书商城后台管理</h1>
+<p style="font-size: 11pt;">管理员：admin</p>
   </body>
 </html>

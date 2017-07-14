@@ -19,9 +19,9 @@
 <script language="javascript">
 /*
  * bar1：必须与对象名相同！不要问为什么！！！
-   ITCAST网络图书商城：大标题
+   David网络图书商城：大标题
  */
-var bar1 = new Q6MenuBar("bar1", "ITCAST网络图书商城");
+var bar1 = new Q6MenuBar("bar1", "David网络图书商城");
 function load() {
 	/*
 	设置本色方案！
