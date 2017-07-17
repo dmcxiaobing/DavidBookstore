@@ -27,7 +27,7 @@
 2. 回显
  --%>
 <p style="color: red; font-weight: 900">${msg }</p>
-<form action="<c:url value='/servlet/UserServlet'/>" method="post">
+<form action="<c:url value='/servlet/UserServlet'/>" method="post" target="_top">
 	<input type="hidden" name="method" value="login"/>
 	用户名：<input type="text" name="username" value="${form.username }"/><br/>
 	密　码：<input type="password" name="password" value="${form.password }"/><br/>

@@ -29,13 +29,6 @@
     <servlet-name>CheckInputServlet</servlet-name>
     <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.CheckInputServlet</servlet-class>
   </servlet>
-
-
-
-
-
-
-
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/servlet/UserServlet</url-pattern>
@@ -72,4 +65,29 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <display-name>LoginFilter</display-name>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.qq986945193.davidbookstore.user.web.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/LoginFilter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/jsps/order/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/jsps/cart/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>CartServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>OrderServlet</servlet-name>
+  </filter-mapping>
 </web-app>

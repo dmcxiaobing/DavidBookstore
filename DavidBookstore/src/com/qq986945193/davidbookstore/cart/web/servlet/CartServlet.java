@@ -24,42 +24,21 @@ public class CartServlet extends BaseServlet {
 	public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 登陆成功后，给用户一个购物车，如果购物车为空，则说明没有登陆，提示用户登陆
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
-		if (cart == null) {
-			request.setAttribute("msg", "请先进行登陆再操作购物车");
-			 skipIframe(request, response);
-//			return "f:/jsps/user/login.jsp";
-            return "";
-		} else {
-			//得到图书的id
-			String bid = request.getParameter("bid");
-			//得到数量
-			int count = Integer.parseInt(request.getParameter("count"));
-			//根据bid查询图书
-			Book book = bookService.loadByBid(bid);
-			//根据数量和图书设置 条目
-			CartItem cartItem = new CartItem();
-			cartItem.setBook(book);
-			cartItem.setCount(count);
-			//将条目添加到购物车
-			cart.add(cartItem);
-			return "f:/jsps/cart/list.jsp";
-		}
+		//得到图书的id
+		String bid = request.getParameter("bid");
+		//得到数量
+		int count = Integer.parseInt(request.getParameter("count"));
+		//根据bid查询图书
+		Book book = bookService.loadByBid(bid);
+		//根据数量和图书设置 条目
+		CartItem cartItem = new CartItem();
+		cartItem.setBook(book);
+		cartItem.setCount(count);
+		//将条目添加到购物车
+		cart.add(cartItem);
+		return "f:/jsps/cart/list.jsp";
 	}
 
-	/**
-	 * servlet 中跳出iframe框架
-	 * @param request
-	 * @param response
-	 * @throws IOException
-	 */
-	private void skipIframe(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//servlet跳出frameset框架
-		PrintWriter out = response.getWriter();
-		String url="<script>window.parent.location.href('";
-		url+=request.getContextPath();
-		url+="/jsps/user/login.jsp')</script>)";
-		out.println(url);
-	}
 	
 	/**
 	 * 清空购物车
