@@ -1,5 +1,7 @@
 package com.qq986945193.davidbookstore.cart.domain;
-
+/**
+ * 
+ */
 import java.math.BigDecimal;
 
 import org.junit.Test;

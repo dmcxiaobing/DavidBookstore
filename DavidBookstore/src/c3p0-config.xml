@@ -3,10 +3,10 @@
 	<!-- 默认配置，当使用ComboPooledDataSource无参构造器时，使用的就是这个配置 -->
 	<default-config>
 		<!-- 基本配置 -->
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/bookstore</property>
+		<property name="jdbcUrl">jdbc:mysql://192.168.1.103:3306/bookstore</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="user">root</property>
-		<property name="password">1234</property>
+		<property name="password">root</property>
 		<!-- 每次增量，当需要创建Connection对象时，一次创建几个 -->
 		<property name="acquireIncrement">3</property>
 		<!-- 当创建池对象后，池中应该有几个Connection对象 -->
@@ -32,7 +32,7 @@
 <!-- 
 tomcat中配置C3P0
 <Context>  
-  <Resource name="itcast" 
+  <Resource name="david" 
 			type="com.mchange.v2.c3p0.ComboPooledDataSource"
 			factory="org.apache.naming.factory.BeanFactory"
 			user="root" 
