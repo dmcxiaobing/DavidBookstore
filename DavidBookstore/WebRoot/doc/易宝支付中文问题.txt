@@ -1,0 +1,24 @@
+1. 表单页面使用gbk编码：
+<%@ page pageEncoding="gbk" %>
+
+2. Servlet中对中文进行处理
+
+// 这里不处理
+String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt,
+	p4_Cur, "图书", "书城", p7_Pdesc, p8_Url, p9_SAF, pa_MP,
+	pd_FrpId, pr_NeedResponse, keyValue);
+
+// 在重定向的url中处理编码！
+"https://www.yeepay.com/app-merchant-proxy/node?..." + 
+	"&p5_Pid=" + new String("图书".getBytes("GBK"), "ISO-8859-1"); + 
+	"&p6_Pcat=" + new String("书城".getBytes("GBK"), "ISO-8859-1");
+
+
+
+
+
+
+
+
+
+

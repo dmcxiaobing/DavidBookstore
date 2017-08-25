@@ -29,6 +29,16 @@
     <servlet-name>CheckInputServlet</servlet-name>
     <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.CheckInputServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminCategoryServlet</servlet-name>
+    <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.AdminCategoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminBookServlet</servlet-name>
+    <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.AdminBookServlet</servlet-class>
+  </servlet>
+
+
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/servlet/UserServlet</url-pattern>
@@ -56,6 +66,14 @@
   <servlet-mapping>
     <servlet-name>CheckInputServlet</servlet-name>
     <url-pattern>/servlet/CheckInputServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminCategoryServlet</servlet-name>
+    <url-pattern>/servlet/AdminCategoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminBookServlet</servlet-name>
+    <url-pattern>/servlet/AdminBookServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

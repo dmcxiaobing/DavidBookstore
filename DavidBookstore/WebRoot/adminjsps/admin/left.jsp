@@ -42,10 +42,10 @@ function load() {
 	<c:url value='/adminjsps/admin/category/list.jsp'/>：指定菜单项时要请求的地址
 	body：结果的显示框架页名称
 	*/
-	bar1.add("分类管理", "查看分类", "<c:url value='/admin/AdminCategoryServlet?method=findAll'/>", "body");
+	bar1.add("分类管理", "查看分类", "<c:url value='/servlet/AdminCategoryServlet?method=findAll'/>", "body");
 	bar1.add("分类管理", "添加分类", "<c:url value='/adminjsps/admin/category/add.jsp'/>", "body");
 
-	bar1.add("图书管理", "查看图书", "<c:url value='/adminjsps/admin/book/list.jsp'/>", "body");
+	bar1.add("图书管理", "查看图书", "<c:url value='/servlet/AdminBookServlet?method=findAll'/>", "body");
 	bar1.add("图书管理", "添加图书", "<c:url value='/adminjsps/admin/book/add.jsp'/>", "body");
 
 	bar1.add("订单管理", "所有订单", "<c:url value='/adminjsps/admin/order/list.jsp'/>", "body");

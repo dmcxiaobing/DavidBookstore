@@ -41,5 +41,41 @@ public class OrderService {
 	public List<Order> findAllOrders(User user) {
 		return orderDao.findAllOrders(user);
 	}
+	/**
+	 * 根据oid查询到订单的详情
+	 */
+	public Order findOrderByOid(String oid) {
+		return orderDao.findOrderByOid(oid);
+	}
+	/**
+	 * 设置订单状态。根据订单id
+	 */
+	public void setOrderStatus(String r6_Order) throws SQLException {
+		/**
+		 * 1,获取订单的状态，如果订单状态未付款则修改，否则不再修改
+		 */
+		int state = orderDao.getStateByOid(r6_Order);
+		if (state == 1) {
+			//修改订单状态为2
+			orderDao.updateOrderState(r6_Order,2);
+		}
+	}
+	/**
+	 * 确认收货
+	 * @throws Exception 
+	 */
+	public void confirm(String oid) throws Exception {
+		/*
+		 * 1,获取订单的状态，如果订单状态是已付款则修改，否则不再修改
+		 */
+		int state = orderDao.getStateByOid(oid);
+		if (state != 3) {
+			throw new RuntimeException("不是付款状态，请不要操作");
+		}
+		/**
+		 * 2，修改订单状态为4，表示交易成功
+		 */
+		orderDao.updateOrderState(oid, 4);
+	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.david.webtools.common.jdbc.TxQueryRunner;
 import com.qq986945193.davidbookstore.book.domain.Book;
@@ -56,6 +57,14 @@ public class BookDao {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	/**
+	 * 根据cid查询当前分类下的图书数量
+	 */
+	public int getCountByCid(String cid) throws SQLException {
+		String sql = "select count(*) from book where cid = ?";
+		Number number = (Number) qr.query(sql, new ScalarHandler(),cid);
+		return number.intValue() ;
 	}
 
 }
