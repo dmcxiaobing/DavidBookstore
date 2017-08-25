@@ -55,6 +55,7 @@
 <h1>我的订单</h1>
 
 <table border="1" width="100%" cellspacing="0" background="black">
+<%--循环遍历订单列表 --%>
 <c:forEach items="${orderList }" var="order">
 	<tr bgcolor="gray" bordercolor="gray">
 		<td colspan="6">
@@ -71,6 +72,7 @@
 			</c:choose>
 		</td>
 	</tr>
+	<%--循环遍历订单条目。订单中的条目 --%>
   <c:forEach items="${order.orderItemList }" var="orderItem">
 	<tr bordercolor="gray" align="center">
 		<td width="15%">

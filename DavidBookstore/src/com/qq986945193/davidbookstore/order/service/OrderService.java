@@ -1,10 +1,12 @@
 package com.qq986945193.davidbookstore.order.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.david.webtools.common.jdbc.JdbcUtils;
 import com.qq986945193.davidbookstore.order.dao.OrderDao;
 import com.qq986945193.davidbookstore.order.domain.Order;
+import com.qq986945193.davidbookstore.user.domain.User;
 
 /**
  * 订单的业务层
@@ -32,6 +34,12 @@ public class OrderService {
 				e1.printStackTrace();
 			}
 		}
+	}
+	/**
+	 * 我的订单，根据用户去查找订单
+	 */
+	public List<Order> findAllOrders(User user) {
+		return orderDao.findAllOrders(user);
 	}
 
 }
