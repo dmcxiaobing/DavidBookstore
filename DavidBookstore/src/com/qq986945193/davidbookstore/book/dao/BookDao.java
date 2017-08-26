@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.david.webtools.common.jdbc.TxQueryRunner;
 import com.qq986945193.davidbookstore.book.domain.Book;
+import com.qq986945193.davidbookstore.category.domain.Category;
 
 /**
  * 书籍的持久层
@@ -47,24 +48,34 @@ public class BookDao {
 
 	/**
 	 * 根据bid查询书籍的详情
+	 * 
 	 * @param bid
 	 * @return
 	 */
 	public Book loadByBid(String bid) {
 		try {
 			String sql = "select * from book where bid = ?";
-			return qr.query(sql, new BeanHandler<Book>(Book.class),bid);
+			return qr.query(sql, new BeanHandler<Book>(Book.class), bid);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
+
 	/**
 	 * 根据cid查询当前分类下的图书数量
 	 */
 	public int getCountByCid(String cid) throws SQLException {
 		String sql = "select count(*) from book where cid = ?";
-		Number number = (Number) qr.query(sql, new ScalarHandler(),cid);
-		return number.intValue() ;
+		Number number = (Number) qr.query(sql, new ScalarHandler(), cid);
+		return number.intValue();
+	}
+
+	/**
+	 * 修改图书的信息
+	 */
+	public void updateBook(Book book) throws SQLException {
+		String sql = "update book set bname =? , price = ? , author = ? , image = ? where bid = ?";
+		qr.update(sql, book.getBname(), book.getPrice(), book.getAuthor(), book.getImage(), book.getBid());
 	}
 
 }
