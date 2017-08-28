@@ -36,25 +36,42 @@
 <h1>我的订单</h1>
 
 <table border="1" width="100%" cellspacing="0" background="black">
+	<c:forEach items="${orderList }" var="order">
 	<tr bgcolor="rgb(78,78,78)" bordercolor="rgb(78,78,78)" style="color: white;">
 		<td colspan="6">
-			订单：8691b4150a0641e7a8729fd5e668820c　成交时间：2013-06-04 15:56:53　金额：<font color="red"><b>126.4</b></font>	已收货（完成）
+			订单：${order.oid }　成交时间：${order.ordertime }　金额：<font color="red"><b>${order.total }　</b></font>	
+			<c:choose> 
+				<c:when test="${order.state eq 1  }"> 
+				<a onclick="return confirm('您真要修改为付款状态吗?')"  href="${pageContext.request.contextPath }/servlet/AdminOrderServlet?method=pay&oid=${order.oid}">付款</a>
+				</c:when>
+				<c:when test="${order.state eq 2 }"> <a onclick="return confirm('您真要修改为已发货状态吗?')" href="${pageContext.request.contextPath }/servlet/AdminOrderServlet?method=send&oid=${order.oid}">发货</a>
+				</c:when>
+				<c:when test="${order.state eq 3 }"> <a onclick="return confirm('您真要修改为交易成功状态吗?')" href="${pageContext.request.contextPath }/servlet/AdminOrderServlet?method=makeSureSuccess&oid=${order.oid}">确认收货</a>
+				</c:when>
+				<c:when test="${order.state eq 4 }"> 交易成功</c:when>
+			</c:choose>
 		</td>
 	</tr>
-	<tr bordercolor="rgb(78,78,78)" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/20385925-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Struts2深入详解</td>
-		<td>单价：63.2元</td>
-		<td>作者：孙鑫</td>
-		<td>数量：2</td>
-		<td>小计：126.4元</td>
-	</tr>
+		<c:forEach items="${order.orderItemList }" var="orderItem">
+		<tr bordercolor="rgb(78,78,78)" align="center">
+			<td width="15%">
+				<div><img src="<c:url value='/${orderItem.book.image }'/>" height="75"/></div>
+			</td>
+			<td>${orderItem.book.bname }</td>
+			<td>${orderItem.book.price }</td>
+			<td>${orderItem.book.author }</td>
+			<td>${orderItem.count }</td>
+			<td>${orderItem.subtotal }</td>
+		</tr>
+		</c:forEach>
+	
+	
+	</c:forEach>
+	
   
  
 
-
+<%-- 
 	<tr bgcolor="rgb(78,78,78)" bordercolor="rgb(78,78,78)" style="color: white;">
 		<td colspan="6">
 			订单：153839427aa94f359fe51932d9f9e383　成交时间：2013-06-04 15:02:31　金额：<font color="red"><b>63.2</b></font>　
@@ -117,7 +134,7 @@
 		<td>作者：qdmmy6</td>
 		<td>数量：3</td>
 		<td>小计：500.0元</td>
-	</tr>
+	</tr> --%>
 </table>
   </body>
 </html>

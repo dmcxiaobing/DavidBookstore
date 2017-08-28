@@ -100,7 +100,7 @@ public class OrderDao {
 	/**
 	 * 根据订单id加载指定的订单里面的所有订单条目
 	 */
-	private void loadOrderItems(Order order) throws SQLException {
+	public void loadOrderItems(Order order) throws SQLException {
 		// 查询两张表，订单条目和图书表 、、、订单条目中包含价格，数量， 图书表中包含书的名称与单价
 		String sql = "select * from orderitem i,book b where i.bid=b.bid and oid = ?";
 		/**
@@ -127,7 +127,7 @@ public class OrderDao {
 	/**
 	 * 把MapList中每个Map转换成两个对象，并建立关系
 	 */
-	private List<OrderItem> toOrderItemList(List<Map<String, Object>> mapList) {
+	public List<OrderItem> toOrderItemList(List<Map<String, Object>> mapList) {
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		for (Map<String, Object> map : mapList) {
 			// 循环给每一个OrderItem赋值
@@ -141,7 +141,7 @@ public class OrderDao {
 	/**
 	 * 把每一个map转换成一个OrderItem对象
 	 */
-	private OrderItem toOrderItem(Map<String, Object> map) {
+	public OrderItem toOrderItem(Map<String, Object> map) {
 		OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
 		Book book = CommonUtils.toBean(map, Book.class);
 		orderItem.setBook(book);

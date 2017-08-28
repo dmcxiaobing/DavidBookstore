@@ -45,6 +45,11 @@
     <servlet-name>AdminBookServlet</servlet-name>
     <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.AdminBookServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminOrderServlet</servlet-name>
+    <servlet-class>com.qq986945193.davidbookstore.admin.web.servlet.AdminOrderServlet</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -82,6 +87,10 @@
   <servlet-mapping>
     <servlet-name>AdminBookServlet</servlet-name>
     <url-pattern>/servlet/AdminBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminOrderServlet</servlet-name>
+    <url-pattern>/servlet/AdminOrderServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
