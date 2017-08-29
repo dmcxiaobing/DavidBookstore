@@ -2,13 +2,16 @@ package com.qq986945193.davidbookstore.book.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.david.webtools.common.jdbc.TxQueryRunner;
+import com.david.webtools.common.utils.CommonUtils;
 import com.qq986945193.davidbookstore.book.domain.Book;
 import com.qq986945193.davidbookstore.category.domain.Category;
 
@@ -54,8 +57,20 @@ public class BookDao {
 	 */
 	public Book loadByBid(String bid) {
 		try {
-			String sql = "select * from book where bid = ?";
-			return qr.query(sql, new BeanHandler<Book>(Book.class), bid);
+//			String sql = "select * from book where bid = ?";
+//			return qr.query(sql, new BeanHandler<Book>(Book.class), bid);
+			/**
+			 * 因为我们需要在Book对象中保存Category的信息。所以我们不使用上面的代码
+			 */
+			String sql = "select * from book where bid=?";
+			Map<String,Object> map = qr.query(sql, new MapHandler(), bid);
+			/**
+			 * 使用一个Map，映射出两个对象，再给这两个对象建立关联关系
+			 */
+			Category category = CommonUtils.toBean(map, Category.class);
+			Book book = CommonUtils.toBean(map, Book.class);
+			book.setCategory(category);
+			return book;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

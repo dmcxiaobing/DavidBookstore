@@ -83,15 +83,15 @@ li {
 			type="text" name="price" value="${book.price }" /><br /> 图书作者：<input
 			type="text" name="author" value="${book.author }" /><br /> 
 			
-		<!-- 	图书分类：<select
+			图书分类：<select
 			style="width: 150px; height: 20px;" name="cid" id="selectOption"
 			onchange="show_sub(this.options[this.options.selectedIndex].value)"
 			onblur="show_sub(this.options[this.options.selectedIndex].value)"> -->
-		<%-- 	<c:forEach items="${categoryList }" var="category">
+			<c:forEach items="${categoryList }" var="category">
 				<!-- 循环遍历所有的图书名称 -->
-				<option id="optionId" value="${category.cid }">${category.cname }</option>
-				  				<option id="${category.cid }" value="${category.cname }">${category.cname }</option>
-			</c:forEach> --%>
+				<option value="${category.cid }"  <c:if test="${category.cid eq book.category.cid }">selected="selected"</c:if>  >${category.cname }</option>
+				  				<%-- <option id="${category.cid }" value="${category.cname }">${category.cname }</option> --%>
+			</c:forEach> 
 
 			<!-- 	<!-- 
 			<option value="">JavaScript</option>
