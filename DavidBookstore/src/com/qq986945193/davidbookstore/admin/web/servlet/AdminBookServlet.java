@@ -12,6 +12,7 @@ import com.david.webtools.common.base.BaseServlet;
 import com.david.webtools.common.utils.CommonUtils;
 import com.qq986945193.davidbookstore.book.domain.Book;
 import com.qq986945193.davidbookstore.book.service.BookService;
+import com.qq986945193.davidbookstore.category.domain.Category;
 import com.qq986945193.davidbookstore.category.service.CategoryService;
 import com.qq986945193.davidbookstore.common.constants.Api;
 
@@ -64,4 +65,37 @@ public class AdminBookServlet extends BaseServlet {
 		request.getSession().setAttribute(Api.SESSION_CID_ADMIN, cid);
 		return null;
 	}
+	/**
+	 * 跳转到去添加图书的jsp页面。
+	 */
+	public String toAdd(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		//首先获取到图书分类。
+		request.setAttribute("categoryList", categoryService.findAll());
+		//然后转发到jsp
+		return "/adminjsps/admin/book/add.jsp";
+	}
+	/**
+	 *编辑图书信息
+	 */
+	public String edit(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		//首先获取到图书信息和分类的
+		Book formBook = CommonUtils.toBean(request.getParameterMap(), Book.class);
+		Category formCategory = CommonUtils.toBean(request.getParameterMap(), Category.class);
+		//设置新的内容
+		formBook.setCategory(formCategory);
+		bookService.editBook(formBook.getBid(),formBook);
+		return findAll(request, resp);
+	}
+	/**
+	 *删除图书信息
+	 */
+	public String deleteByBid(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		//首先获取要删除的id。
+		String bid = request.getParameter("bid");
+		//删除图书
+		bookService.deleteById(bid);
+		return findAll(request, resp);
+	}
 }
+
+

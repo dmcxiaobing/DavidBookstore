@@ -46,7 +46,7 @@ function load() {
 	bar1.add("分类管理", "添加分类", "<c:url value='/adminjsps/admin/category/add.jsp'/>", "body");
 
 	bar1.add("图书管理", "查看图书", "<c:url value='/servlet/AdminBookServlet?method=findAll'/>", "body");
-	bar1.add("图书管理", "添加图书", "<c:url value='/adminjsps/admin/book/add.jsp'/>", "body");
+	bar1.add("图书管理", "添加图书", "<c:url value='/servlet/AdminBookServlet?method=toAdd'/>", "body");
 
 	bar1.add("订单管理", "所有订单", "<c:url value='/servlet/AdminOrderServlet?method=findAll'/>", "body");
 	bar1.add("订单管理", "未付款订单", "<c:url value='/servlet/AdminOrderServlet?method=findByState&state=1'/>", "body");

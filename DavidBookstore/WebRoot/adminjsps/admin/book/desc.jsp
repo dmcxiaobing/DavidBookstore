@@ -64,7 +64,13 @@ li {
  		
  		);*/
 	}
-
+	
+	/***     进行设置请求的方法名       ***/
+	function setMethod(method){
+		//获取传送的id method
+		var ele =document.getElementById("method");
+		ele.value=method;
+	}
 </script>
 
 </script>
@@ -75,18 +81,19 @@ li {
 		<img src="<c:url value='/${book.image }'/>" border="0" />
 		</div>
 	<form style="margin:20px;" id="form"
-		action="<c:url value='/servlet/AdminBookServlet?method=modByBid&bid=${book.bid }&cid'/>"
+		action="<c:url value='/servlet/AdminBookServlet'/>"
 		method="post">
 		<input type="hidden" name="image" value="${book.image }"/>
+		<input type="hidden" name="bid" value="${book.bid }"/>
+		<input type="hidden" name="method" value="" id="method"/>
 		图书名称：<input
 			type="text" name="bname" value="${book.bname }" /><br /> 图书单价：<input
 			type="text" name="price" value="${book.price }" /><br /> 图书作者：<input
 			type="text" name="author" value="${book.author }" /><br /> 
-			
-			图书分类：<select
-			style="width: 150px; height: 20px;" name="cid" id="selectOption"
-			onchange="show_sub(this.options[this.options.selectedIndex].value)"
+			<!-- id="selectOption" onchange="show_sub(this.options[this.options.selectedIndex].value)"
 			onblur="show_sub(this.options[this.options.selectedIndex].value)"> -->
+			图书分类：
+			<select style="width: 150px; height: 20px;" name="cid">
 			<c:forEach items="${categoryList }" var="category">
 				<!-- 循环遍历所有的图书名称 -->
 				<option value="${category.cid }"  <c:if test="${category.cid eq book.category.cid }">selected="selected"</c:if>  >${category.cname }</option>
@@ -98,11 +105,12 @@ li {
 			<option value="">Hibernate</option>
 			<option value="">Struts</option> 
 			-->
-
 			<!-- <option value="" selected='selected'>Spring</option> -->
 		</select><br />
 		<%-- 	<input type="submit" name="method" value="<c:url value='/servlet/AdminBookServlet?method=deleteByBid'/>" onclick="return confirm('是否真要删除该图书？');"/> --%>
-		<input type="submit" name="method" value="修改图书信息" onclick="modByBid()" />
+		<!--   	<input type="submit" value="删除" onclick="setMethod('delete')"/> -->
+		<input type="submit" value="修改" onclick="setMethod('edit')"/>
+		<input type="submit" value="删除" onclick="setMethod('deleteByBid')"/>
 	</form>
 
 	<!-- <select name="type"

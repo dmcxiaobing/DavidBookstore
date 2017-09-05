@@ -46,4 +46,23 @@ public class BookService {
 	public void updateBook(Book book) throws SQLException {
 		bookDao.updateBook(book);
 	}
+	/**
+	 * 添加图书
+	 */
+	public void add(Book book) {
+		bookDao.add(book);
+	}
+	/**
+	 * 删除图书
+	 */
+	public void deleteById(String bid) {
+		bookDao.deleteById(bid);
+	}
+	/**
+	 * 编辑图书，修改图书信息
+	 * @param formBook 
+	 */
+	public void editBook(String bid, Book formBook) {
+		bookDao.edit(bid,formBook);
+	}
 }

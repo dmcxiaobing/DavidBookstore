@@ -92,5 +92,54 @@ public class BookDao {
 		String sql = "update book set bname =? , price = ? , author = ? , image = ? where bid = ?";
 		qr.update(sql, book.getBname(), book.getPrice(), book.getAuthor(), book.getImage(), book.getBid());
 	}
+	/**
+	 * 添加图书
+	 */
+	public void add(Book book) {
+		try {
+			String sql = "insert into book values(?,?,?,?,?,?)";
+			Object[] params = {book.getBid(),
+					book.getBname(),
+					book.getPrice(),
+					book.getAuthor(),
+					book.getImage(),
+					book.getCategory().getCid()
+					};
+			qr.update(sql,params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 根据ID删除图书
+	 */
+	public void deleteById(String bid) {
+		try {
+			String sql = "delete from book where bid=?";
+			qr.update(sql,bid);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 编辑图书
+	 * @param formBook 
+	 */
+	public void edit(String bid, Book formBook) {
+		try {
+			String sql = "update book set bname=?,price=?,author=?,image=?,cid=? where bid=?";
+			Object[] params = {
+					formBook.getBname(),
+					formBook.getPrice(),
+					formBook.getAuthor(),
+					formBook.getImage(),
+					formBook.getCategory().getCid(),
+					bid
+					};
+			qr.update(sql,params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }
