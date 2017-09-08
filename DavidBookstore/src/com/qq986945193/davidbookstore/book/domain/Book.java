@@ -6,12 +6,20 @@ import com.qq986945193.davidbookstore.category.domain.Category;
  * 书籍的实体类
  */
 public class Book {
-	private String bid;
-	private String bname;
-	private Double price;
-	private String author;
-	private String image;
-	private Category category;
+	private String bid;//图书ID
+	private String bname;//图书名称
+	private Double price;//图书价格
+	private String author;//图书作者
+	private String image;//图书image
+	private Category category;//图书所属分类
+	private Integer del;//是否被删除，1,已经删除了，0没有删除
+	
+	public Integer getDel() {
+		return del;
+	}
+	public void setDel(Integer del) {
+		this.del = del;
+	}
 	public String getBid() {
 		return bid;
 	}

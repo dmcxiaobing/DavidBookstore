@@ -29,7 +29,7 @@ public class BookDao {
 	 */
 	public List<Book> findBookByCid(String cid) {
 		try {
-			String sql = "select * from book where cid = ?";
+			String sql = "select * from book where del=0 and cid = ? ";
 			return qr.query(sql, new BeanListHandler<Book>(Book.class), cid);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -41,7 +41,7 @@ public class BookDao {
 	 */
 	public List<Book> findAllBook() {
 		try {
-			String sql = "select * from book";
+			String sql = "select * from book where del=0";
 			return qr.query(sql, new BeanListHandler<Book>(Book.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -62,7 +62,7 @@ public class BookDao {
 			/**
 			 * 因为我们需要在Book对象中保存Category的信息。所以我们不使用上面的代码
 			 */
-			String sql = "select * from book where bid=?";
+			String sql = "select * from book where del=0 and bid=?";
 			Map<String,Object> map = qr.query(sql, new MapHandler(), bid);
 			/**
 			 * 使用一个Map，映射出两个对象，再给这两个对象建立关联关系
@@ -80,7 +80,7 @@ public class BookDao {
 	 * 根据cid查询当前分类下的图书数量
 	 */
 	public int getCountByCid(String cid) throws SQLException {
-		String sql = "select count(*) from book where cid = ?";
+		String sql = "select count(*) from book where del=0 and cid = ?";
 		Number number = (Number) qr.query(sql, new ScalarHandler(), cid);
 		return number.intValue();
 	}
@@ -97,13 +97,14 @@ public class BookDao {
 	 */
 	public void add(Book book) {
 		try {
-			String sql = "insert into book values(?,?,?,?,?,?)";
+			String sql = "insert into book values(?,?,?,?,?,?,?)";
 			Object[] params = {book.getBid(),
 					book.getBname(),
 					book.getPrice(),
 					book.getAuthor(),
 					book.getImage(),
-					book.getCategory().getCid()
+					book.getCategory().getCid(),
+					0
 					};
 			qr.update(sql,params);
 		} catch (Exception e) {
@@ -115,7 +116,8 @@ public class BookDao {
 	 */
 	public void deleteById(String bid) {
 		try {
-			String sql = "delete from book where bid=?";
+//			String sql = "delete from book where bid=?";//这个是真删除，当然实际不能真删除，需要修改字段
+			String sql = "update book set del=1 where bid=?";
 			qr.update(sql,bid);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
