@@ -1,9 +1,5 @@
 # DavidBookstore
 
-作者：[程序员小冰](http://blog.csdn.net/qq_21376985)
-
-[欢迎点击关注我的微博](http://weibo.com/mcxiaobing)
-
 这是一个简单的网上书城的功能小项目。主要是用javaweb基础最原始的技术实现的。
 
 包含中的内容有：
@@ -30,7 +26,7 @@ html/css/javascript/xml
 
 - **数据库：mysql**
 
-[作者：程序员小冰](http://blog.csdn.net/qq_21376985)
+[作者：程序员小冰](https://github.com/QQ986945193)
 
 [欢迎点击关注我的微博](http://weibo.com/mcxiaobing)
 
